@@ -48,9 +48,9 @@ export default function History() {
   }, []);
   return (
     <>
-      <div className="bg-[#25D366] min-h-dvh pt-8">
-        <div className="border w-96 min-h-96 mx-auto rounded-lg bg-[white] flex flex-col items-center my-4 shadow-2xl shadow-[#20b778] ">
-          <div className="border w-full min-h-12 rounded-t-lg bg-[#DBE0E3] ">
+      <div className="bg-[#ACE1AF] min-h-dvh pt-8">
+        <div className="border w-96 min-h-96 mx-auto rounded-lg bg-[white] flex flex-col items-center my-4 shadow-2xl shadow-[#20b778] border-[white]">
+          <div className="border w-full min-h-12 rounded-t-lg bg-[#BFF6C3] border-[#BFF6C3]">
             <div className="float-left">
               <button
                 className="font-bold border text-white bg-[#25D366] mt-2 ml-2 w-32 rounded-lg py-auto"
@@ -75,7 +75,7 @@ export default function History() {
               <p className="font-bold pt-6">No history found </p>
             ) : (
               apiData.toReversed().map((items) => (
-                <p className="border-2 my-1 w-64 py-1 rounded-md font-bold flex flex-col items-center   border-[#25D366]">
+                <p className="border my-1 w-72 py-1 rounded-md font-bold flex flex-col items-center   border-[#25D366]">
                   <Link to="/" state={{ testValue: items.number }}>
                     {items.number}
                   </Link>

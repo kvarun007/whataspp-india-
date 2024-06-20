@@ -14,15 +14,15 @@ const dp = mysql.createConnection({
 app.get("/", (req,res)=>{
     res.setHeader("Access-Control-Allow-Origin", "*");
     res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
-        res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+    res.setHeader("Access-Control-Allow-Headers", "Content-Type");
     const sql = "select * from history";
     dp.query(sql,(err,data)=>{
         if(err){
-            console.log(err)  
+            //console.log(err)  
             return res.json("error");
         }
         else{
-            console.log(res);
+            //console.log(res);
             return res.json(data)
         }
     })
@@ -54,10 +54,12 @@ app.get("/delete", (req,res)=>{
 // })
 app.get('/add', (req, res) => {
     console.log(req.query.number)
+    console.log(req.query.firstName)
+    console.log(req.query.lastName)
     res.setHeader("Access-Control-Allow-Origin", "*");
     res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
     res.setHeader("Access-Control-Allow-Headers", "Content-Type");
-    const sql = `INSERT INTO history (number) VALUES (${req.query.number})`;
+    const sql = `INSERT INTO history (first_name,last_name,number) VALUES ("${req.query.firstName}","${req.query.lastName}",${req.query.number})`;
     //console.log(sql)
     dp.query(sql,(err, results) => {
       if (err) {
@@ -65,9 +67,9 @@ app.get('/add', (req, res) => {
         return res.status(500).json({ error: err.message });
       }
       //console.log(results)
-      console.log("d")
+      //console.log("d")
       res.status(201).send({ message: 'Number added', id: results.insertId });
-      console.log(results)
+      //console.log(results)
     });
   });
 app.listen(4100,()=>{console.log("server is running at 4100")})
